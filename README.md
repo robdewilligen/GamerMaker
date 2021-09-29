@@ -68,28 +68,54 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ```mermaid
 erDiagram
 
-USER ||--o{ POSTS : contains
+USER ||--o{ POSTS : Contains
+USER ||--o{ TAGS : Contains
+POSTS }o--o{ TAGS: Has
+
+REVIEWS ||--o{ REVIEWTYPE: Contains
+
+POSTS ||--o{ FAVORITES: Has
+USER ||--o{ FAVORITES: Contains
+
+POSTS ||--o{ REVIEWS: Has
+USER ||--o{ REVIEWS: Contains
 
 USER{
     string Name
     string email
     string password
-    int likes
-    int uploads
     bool is-admin
     dateTime created-at
     dateTime updated-at
 }
 POSTS{
-    string name
+    string title
     string description
-    int likes
     img image
-    string dimension
-    string genre
-    arrayOfString tags
-    string creator
+    int user_id
     dateTime created-at
     dateTime updated-at
+}
+TAGS{
+    string naam
+    int user_id
+    dateTime created-at
+    dateTime updated-at
+}
+REVIEWS{
+    string Review-Type-ID
+    int user_id
+    int post_id
+    dateTime created-at
+    dateTime updated-at
+}
+FAVORITES{
+    int user_id
+    int post_id
+    dateTime created-at
+    dateTime updated-at
+}
+REVIEWTYPE{
+    string name
 }
 ```
