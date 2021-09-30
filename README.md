@@ -69,13 +69,13 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 erDiagram
 
 USER ||--o{ POSTS : Contains
-USER ||--o{ TAGS : Contains
+USER ||--o{ TAGS : Has
 POSTS }o--o{ TAGS: Has
 
 REVIEWS ||--o{ REVIEWTYPE: Contains
 
 POSTS ||--o{ FAVORITES: Has
-USER ||--o{ FAVORITES: Contains
+USER ||--o{ FAVORITES: Has
 
 POSTS ||--o{ REVIEWS: Has
 USER ||--o{ REVIEWS: Contains
