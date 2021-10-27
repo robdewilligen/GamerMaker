@@ -14,6 +14,24 @@
         </form>
     @endcan
 
+    @can('deepVal')
+        <div class="flex items-center">
+            @if(!$post->favoritedBy(auth()->user()))
+                <form action="{{ route('posts.favorites', $post) }}" method="post" class="mr-1">
+                    @csrf
+                    <button type="submit" class="text-green-500">Add to Favorites</button>
+                </form>
+            @else
+                <form action="{{ route('posts.favorites', $post) }}" method="post" class="mr-1">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="text-green-500">Remove from Favorites</button>
+                </form>
+            @endif
+        </div>
+    @endcan
+
+
     <div class="flex items-center">
         @auth
             @if (!$post->likedBy(auth()->user()))
@@ -31,6 +49,7 @@
         @endauth
 
         <span>{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</span>
+
     </div>
 
 </div>
