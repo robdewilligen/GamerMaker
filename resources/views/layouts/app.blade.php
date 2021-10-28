@@ -25,6 +25,11 @@
 
                 <ul class="flex item-center">
                     @auth
+                        @if(Auth::user()->isAdmin())
+                        <li>
+                            <a href="{{ route('admin') }}" class="p-3">Admin Panel</a>
+                        </li>
+                        @endif
                         <li>
                             <a href="#" class="p-3">{{ auth()->user()->name }}</a>
                         </li>

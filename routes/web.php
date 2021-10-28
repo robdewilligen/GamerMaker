@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -17,6 +18,9 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard');
+
+Route::get('/admin', [AdminController::class, 'index'])
+    ->name('admin');
 
 Route::get('/users/{user:username}/posts', [UserPostController::class, 'index'])->name('users.posts');
 
