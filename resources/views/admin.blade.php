@@ -31,7 +31,7 @@
 
 
 
-//CSS for toggle button
+{{--//CSS for toggle button--}}
 <style>
     /* CHECKBOX TOGGLE SWITCH */
     /* @apply rules for documentation, these do not work as inline style */
