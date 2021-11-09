@@ -14,7 +14,7 @@
         </form>
     @endcan
 
-    @can('deepVal')
+{{--    @can('deepVal')--}}
         <div class="flex items-center">
             @if(!$post->favoritedBy(auth()->user()))
                 <form action="{{ route('posts.favorites', $post) }}" method="post" class="mr-1">
@@ -29,7 +29,7 @@
                 </form>
             @endif
         </div>
-    @endcan
+{{--    @endcan--}}
 
 
     <div class="flex items-center">

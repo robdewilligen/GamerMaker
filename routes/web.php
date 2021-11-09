@@ -32,9 +32,9 @@ Route::post('/login', [LoginController::class, 'store']);
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
-//Route::get('/profile/{id}', [ProfileController::class, 'index'])->name('profile');
-Route::get('/profile/{id}', [ProfileController::class, 'show']);
-Route::post('/profile/{id}', [ProfileController::class, 'edit']);
+Route::get('/profile/{user:username}', [ProfileController::class, 'index'])->name('profile');
+//Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
+//Route::post('/profile/{user}', [ProfileController::class, 'edit']);
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');

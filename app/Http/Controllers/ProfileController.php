@@ -8,22 +8,38 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-//    public function index(User $user)
-//    {
-//        return view('users.profile.edit', [
-//            'user' => $user,
-//        ]);
-//    }
-
-    public function show($id)
+    public function index()
     {
-        return view('user.profile', [
-           'user' => User::findOrFail($id)
+        $users = User::class;
+
+        return view('users.profile.edit', [
+
+            'users' => $users,
         ]);
     }
 
-    public function edit(User $user)
+    public function store(Request $request)
     {
-        return view('profile.edit');
+
+        //Validation
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'username' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'password' => 'required|confirmed',
+        ]);
+
+        //Store User
+        User::find([
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        $this->save();
+
+        //redirect
+        return redirect()->route('dashboard');
     }
 }
